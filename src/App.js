@@ -17,8 +17,6 @@ componentDidMount(){
   });
 }
 render (){
-
-
   return (
   <Wrapper>
     <Navbar />
