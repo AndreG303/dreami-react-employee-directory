@@ -2,7 +2,7 @@
 
 I created a employee directory with React breaking the application's UI into components, managing component state, and responding to user events.
 
-### Link to Deployed app: https://andreg303.github.io/dreami-react-employee-directory/index
+### Link to Deployed app: https://andreg303.github.io/dreami-react-employee-directory/
 
 <img width="1374" alt="Screen Shot 2020-10-17 at 3 12 39 PM" src="https://user-images.githubusercontent.com/65183415/96354428-74bd6580-108b-11eb-9fc9-fa18a07b8f6e.png">
 
