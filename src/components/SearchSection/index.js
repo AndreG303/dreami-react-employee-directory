@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import "./style.css";
-import DataHook from "../../utils/DataHook";
+import DataContext from "../../utils/DataContext";
 
 const SearchSection = () => {
-    const context = useContext(DataHook);
+    const context = useContext(DataContext);
 return (
     <div className="searchbox">
       <div className="input-group">

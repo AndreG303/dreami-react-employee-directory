@@ -2,9 +2,9 @@ import React, {useState, useEffect} from "react";
 import TableRow from "../TableRow";
 import Navbar from "../Navbar";
 import API from "../../utils/API";
-import "./style.css";
-import DataHook from "../../utils/DataHook"
+import DataContext from "../../utils/DataContext";
 
+// set developer state and table headings
 const DataArea = () => {
     const [developerState, setDeveloperState] = useState({
         users: [],
@@ -19,6 +19,7 @@ const DataArea = () => {
         ]
       });
     
+      // filtered heading elements by ascending and descending order
       const handleSort = heading => {
         let currentOrder = developerState.headings
           .filter(elem => elem.name === heading)
@@ -33,13 +34,11 @@ const DataArea = () => {
     
         const compareFnc = (a, b) => {
           if (currentOrder === "ascend") {
-            // account for missing values
             if (a[heading] === undefined) {
               return 1;
             } else if (b[heading] === undefined) {
               return -1;
             }
-            // numerically
             else if (heading === "name") {
               return a[heading].first.localeCompare(b[heading].first);
             } else if (heading === "dob") {
@@ -75,6 +74,7 @@ const DataArea = () => {
         });
       };
     
+      // serch area funcionality and filter input to lower case
       const handleSearchChange = event => {
         const filter = event.target.value;
         const filteredList = developerState.users.filter(item => {
@@ -87,7 +87,7 @@ const DataArea = () => {
     
         setDeveloperState({ ...developerState, filteredUsers: filteredList });
       };
-    
+    // use effect to get results and users data
       useEffect(() => {
         API.getUsers().then(results => {
           console.log(results.data.results);
@@ -100,14 +100,14 @@ const DataArea = () => {
       }, []);
     
       return (
-        <DataHook.Provider
+        <DataContext.Provider
           value={{ developerState, handleSearchChange, handleSort }}
         >
           <Navbar />
           <div className="data-area">
             {developerState.filteredUsers.length > 0 ? <TableRow /> : <div></div>}
           </div>
-        </DataHook.Provider>
+        </DataContext.Provider>
       );
     };
     

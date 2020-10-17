@@ -1,10 +1,14 @@
 import React from 'react';
-import "./style.css";
 import SearchSection from "../SearchSection/index"
+
+const styles = {
+display:"flex",
+justifyContent: "center"
+}
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav style={styles} className="navbar navbar-expand-lg navbar-light bg-light">
        <div className="search-area col-4">
         <SearchSection />
     </div>
